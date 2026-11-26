@@ -44,15 +44,20 @@ var LINKS = {
 };
 
 var key = new URLSearchParams(location.search).get("to");
-var url = key && LINKS[key];
-if (url && url.indexOf("YOUR_") !== -1) url = null; // 占位链接视为未配置
+var raw = key && LINKS[key];
+var configured = raw && raw.indexOf("YOUR_") === -1; // 含占位符 = 联盟链接尚未配置
 var msg = document.getElementById("msg");
 var manual = document.getElementById("manual");
 
-if (url) {
+if (configured) {
   msg.textContent = "正在前往 " + key + " 的官网…";
-  manual.href = url;
-  setTimeout(function () { location.replace(url); }, 800);
+  manual.href = raw;
+  setTimeout(function () { location.replace(raw); }, 800);
+} else if (raw) {
+  msg.textContent = "「" + key + "」的推荐通道正在筹备中，敬请期待…";
+  manual.textContent = "返回首页";
+  manual.href = "index.html";
+  setTimeout(function () { location.replace("index.html"); }, 1800);
 } else {
   msg.textContent = "链接无效或已下线，正在返回首页…";
   manual.textContent = "返回首页";
