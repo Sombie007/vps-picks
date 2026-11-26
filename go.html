@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>正在跳转…</title>
+<style>
+body{
+  margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:#0d1117;color:#e6edf3;line-height:1.7;
+  font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+.box{text-align:center}
+.spin{
+  width:36px;height:36px;margin:0 auto 18px;
+  border:3px solid #30363d;border-top-color:#58a6ff;border-radius:50%;
+  animation:spin .9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+#msg{font-size:1.05rem}
+.tip{margin-top:10px;color:#8b949e;font-size:.88rem}
+.tip a{color:#58a6ff}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="spin"></div>
+  <p id="msg">正在跳转，请稍候…</p>
+  <p class="tip">如果没有自动跳转，<a id="manual" href="#">点这里手动前往</a></p>
+</div>
+
+<script>
+/* ============================================================
+ * 唯一需要修改的地方：
+ * 把下面每条链接换成你联盟后台生成的带佣链接。
+ * 新增商家就加一行，然后首页卡片按钮写成 go.html?to=新key
+ * ============================================================ */
+var LINKS = {
+  racknerd:  "https://my.racknerd.com/aff.php?aff=22454",  // 已填入你的联盟ID，2026-11-26 激活
+  cloudcone: "https://app.cloudcone.com/?ref=YOUR_REF",
+  bwh:       "https://bandwagonhost.com/aff.php?aff=YOUR_AFF_ID",
+  dmit:      "https://www.dmit.io/aff.php?aff=YOUR_AFF_ID"
+};
+
+var key = new URLSearchParams(location.search).get("to");
+var url = key && LINKS[key];
+if (url && url.indexOf("YOUR_") !== -1) url = null; // 占位链接视为未配置
+var msg = document.getElementById("msg");
+var manual = document.getElementById("manual");
+
+if (url) {
+  msg.textContent = "正在前往 " + key + " 的官网…";
+  manual.href = url;
+  setTimeout(function () { location.replace(url); }, 800);
+} else {
+  msg.textContent = "链接无效或已下线，正在返回首页…";
+  manual.textContent = "返回首页";
+  manual.href = "index.html";
+  setTimeout(function () { location.replace("index.html"); }, 1500);
+}
+</script>
+</body>
+</html>

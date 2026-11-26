@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高性价比 VPS 推荐 · 实测榜单</title>
+<meta name="description" content="自费购买的 VPS 实测数据汇总：跑分、三网延迟、30 天在线率、优惠码，持续更新。">
+<style>
+:root{
+  --bg:#0d1117; --card:#161b22; --border:#30363d;
+  --text:#e6edf3; --muted:#8b949e;
+  --accent:#58a6ff; --accent-dark:#1f6feb; --green:#3fb950;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--text); line-height:1.7;
+  font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+a{color:var(--accent)}
+
+header{border-bottom:1px solid var(--border);padding:14px 0}
+.brand{font-weight:700;font-size:1.05rem}
+.brand small{font-weight:400;color:var(--muted);margin-left:8px}
+
+.hero{padding:56px 0 36px;text-align:center}
+.hero h1{font-size:2.1rem;margin-bottom:12px}
+.hero p{color:var(--muted);max-width:640px;margin:0 auto}
+.chip{
+  display:inline-block;margin-top:16px;font-size:.8rem;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:3px 14px;
+}
+
+section{padding:24px 0 8px}
+section>h2{font-size:1.35rem;margin-bottom:6px}
+section>.sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:22px;display:flex;flex-direction:column;
+}
+.card h3{font-size:1.1rem;margin-bottom:4px}
+.tag{
+  display:inline-block;font-size:.75rem;color:var(--accent);
+  border:1px solid var(--border);border-radius:6px;padding:1px 8px;margin-bottom:12px;
+}
+.card ul{list-style:none;margin:8px 0 14px}
+.card ul li{padding-left:1.2em;position:relative;font-size:.92rem;color:#c9d1d9}
+.card ul li::before{content:"·";position:absolute;left:.3em;color:var(--muted)}
+.price{font-size:.92rem;color:var(--green);font-weight:600;margin-bottom:16px}
+.btn{
+  margin-top:auto;display:block;text-align:center;
+  background:var(--accent-dark);color:#fff;text-decoration:none;
+  border-radius:8px;padding:10px 16px;font-weight:600;font-size:.95rem;
+}
+.btn:hover{filter:brightness(1.15)}
+
+.faq details{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:14px 18px;margin-bottom:10px;
+}
+.faq summary{cursor:pointer;font-weight:600}
+.faq details p{color:#c9d1d9;font-size:.93rem;margin-top:8px}
+
+footer{
+  border-top:1px solid var(--border);margin-top:48px;
+  padding:26px 0;color:var(--muted);font-size:.85rem;
+}
+@media(max-width:600px){.hero h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="brand">【站名】选服笔记 <small>只推荐我自己在跑的机器</small></span>
+  </div>
+</header>
+
+<main>
+  <div class="hero wrap">
+    <h1>高性价比 VPS 实测榜单</h1>
+    <p>所有数据来自我自费购买的机器：跑分、三网延迟、30 天在线率、工单实测，翻车了也照写。</p>
+    <span class="chip">本页含联盟链接 · 通过链接购买我会获得少量返佣 · 价格以官网实时为准</span>
+  </div>
+
+  <section class="wrap">
+    <h2>推荐榜单</h2>
+    <p class="sub">按用途选，点按钮直达官网（持续更新：2026-12）</p>
+    <div class="grid">
+
+      <div class="card">
+        <h3>RackNerd</h3>
+        <span class="tag">白菜年付</span>
+        <ul>
+          <li>KVM 小鸡约 $11/年起</li>
+          <li>运营十年以上，口碑稳</li>
+          <li>适合练手、跑小服务、囤年付</li>
+        </ul>
+        <div class="price">约 $11–13/年 起（以官网为准）</div>
+        <a class="btn" href="go.html?to=racknerd" rel="nofollow sponsored">查看最新套餐</a>
+      </div>
+
+      <!-- CloudCone / 搬瓦工 / DMIT 尚未注册联盟账号，先隐藏。
+           注册后在 go.html 填好链接，并删掉这里的注释标记即可上线。 -->
+      <div class="card" hidden>
+        <h3>CloudCone</h3>
+        <span class="tag">闪购专业户</span>
+        <ul>
+          <li>Flash Sale 频繁，捡漏机会多</li>
+          <li>支持支付宝付款</li>
+          <li>适合预算敏感、蹲促销囤机</li>
+        </ul>
+        <div class="price">闪购时常有低价年付</div>
+        <a class="btn" href="go.html?to=cloudcone" rel="nofollow sponsored">查看最新套餐</a>
+      </div>
+
+      <div class="card" hidden>
+        <h3>搬瓦工 BWH</h3>
+        <span class="tag">线路口碑</span>
+        <ul>
+          <li>CN2 GIA 回程，延迟低</li>
+          <li>价格偏高，热门套餐要蹲补货</li>
+          <li>适合建站、对外提供服务的场景</li>
+        </ul>
+        <div class="price">入门约 $50/年 级别</div>
+        <a class="btn" href="go.html?to=bwh" rel="nofollow sponsored">查看最新套餐</a>
+      </div>
+
+      <div class="card" hidden>
+        <h3>DMIT</h3>
+        <span class="tag">高端线路</span>
+        <ul>
+          <li>三网优化线路，延迟稳定性强</li>
+          <li>定位高端，月付为主</li>
+          <li>适合对延迟、稳定性敏感的用户</li>
+        </ul>
+        <div class="price">月付 $10 级别起</div>
+        <a class="btn" href="go.html?to=dmit" rel="nofollow sponsored">查看最新套餐</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>怎么选</h2>
+    <p class="sub">不确定的话按场景对号入座</p>
+    <div class="grid">
+      <div class="card">
+        <h3>🎯 练手 / 学习 / 跑小工具</h3>
+        <p class="muted" style="font-size:.92rem">年付白菜价优先，翻车不心疼。选 RackNerd，$11 一年的机器足够学 Linux、部署个人项目。</p>
+      </div>
+      <div class="card">
+        <h3>🌐 正经建站 / 对外服务</h3>
+        <p class="muted" style="font-size:.92rem">延迟和稳定性优先。我正在实测 CN2 优化线路的商家，数据出来后会补充到榜单。</p>
+      </div>
+      <div class="card">
+        <h3>💰 预算有限 / 想多囤几台</h3>
+        <p class="muted" style="font-size:.92rem">盯大促节点。RackNerd 在黑五、新年、周年庆会放出全年最低价的年付套餐。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap faq">
+    <h2>常见问题</h2>
+    <p class="sub">买之前先看这几个坑</p>
+
+    <details>
+      <summary>年付会不会跑路？</summary>
+      <p>任何商家都有风险。原则：只买你能承受损失的金额；优先选运营多年的商家；新商家先低配试水一年再考虑加注。我榜单里只放运营历史较长的。</p>
+    </details>
+    <details>
+      <summary>为什么链接是 go/xxx 这种中转格式？</summary>
+      <p>两个原因：一是能统计点击，知道哪个内容带来了转化；二是商家换联盟系统或域名时，我改一行配置就行，写过的文章不用挨个修。</p>
+    </details>
+    <details>
+      <summary>促销价会不会续费变贵？</summary>
+      <p>会。促销价通常只对应首年，续费价以套餐页标注为准。买之前看清续费价，我的测评文里都会单独写出来。</p>
+    </details>
+    <details>
+      <summary>测评数据可信吗？</summary>
+      <p>我只写自己花钱买过、真跑了 30 天以上的机器，跑分和测速截图原始可查。商家并不知道我在做测评，不存在「送测说好话」的情况。</p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>披露：本站含联盟推广链接，通过链接购买我会获得商家支付的少量返佣，不影响测评结论与你看到的价格。</p>
+    <p>© 2026 【站名】 · 数据更新于 2026-12</p>
+  </div>
+</footer>
+
+</body>
+</html>
