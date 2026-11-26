@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>小机实验室 / VPS Lab</title>
+    <link>https://sombie007.github.io/vps-picks/</link>
+    <description>省钱选机不踩坑：VPS 优惠情报、选购指南与测评，中英双语。</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Nov 2026 08:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Best Cheap VPS Deals Right Now (November 2026)</title>
+      <link>https://sombie007.github.io/vps-picks/blog/best-cheap-vps-2026.html</link>
+      <guid>best-cheap-vps-2026</guid>
+      <pubDate>Wed, 26 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Black Friday picks: RackNerd KVM from $15.98/year with lifetime recurring pricing.</description>
+    </item>
+    <item>
+      <title>RackNerd Black Friday 2026: KVM VPS from $15.98/year (Recurring Pricing)</title>
+      <link>https://sombie007.github.io/vps-picks/blog/racknerd-black-friday-2026.html</link>
+      <guid>racknerd-black-friday-2026</guid>
+      <pubDate>Wed, 26 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Full Black Friday tier list, plan picks and buying checklist.</description>
+    </item>
+    <item>
+      <title>RackNerd 黑五 2026 攻略：$15.98/年的 KVM，续费同价</title>
+      <link>https://sombie007.github.io/vps-picks/blog/racknerd-blackfriday-2026-zh.html</link>
+      <guid>racknerd-blackfriday-2026-zh</guid>
+      <pubDate>Wed, 26 Nov 2026 08:00:00 +0000</pubDate>
+      <description>黑五已开抢：KVM 年付 $15.98 起、终身续费同价，附套餐表与购买提醒。</description>
+    </item>
+    <item>
+      <title>RackNerd Review 2026: Specs, Pricing, and Who It's Best For</title>
+      <link>https://sombie007.github.io/vps-picks/blog/racknerd-review-2026.html</link>
+      <guid>racknerd-review-2026</guid>
+      <pubDate>Wed, 26 Nov 2026 08:00:00 +0000</pubDate>
+      <description>An honest budget-KVM review based on official specs; hands-on benchmarks pending.</description>
+    </item>
+  </channel>
+</rss>

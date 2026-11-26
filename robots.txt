@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sombie007.github.io/vps-picks/sitemap.xml
