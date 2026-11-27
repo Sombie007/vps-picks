@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPS 流量与配置计算器：买之前算一算够不够用 | 小机实验室</title>
+<meta name="description" content="输入日均访客量和用途，在线计算 VPS 月流量需求与最低内存档位，直接对上当前促销套餐价格。买服务器前先算一算。">
+<meta property="og:title" content="VPS 流量与配置计算器">
+<meta property="og:description" content="买之前算一算：月流量需求、最低内存档位、对应套餐价格，在线免登录。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sombie007.github.io/vps-picks/tools/vps-calculator.html">
+<meta property="og:site_name" content="小机实验室">
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--accent-dark:#1f6feb;--green:#3fb950}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);line-height:1.75;font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--border);padding:14px 0}
+.brand{font-weight:700;text-decoration:none;color:var(--text)}
+.brand small{font-weight:400;color:var(--muted);margin-left:8px}
+h1{font-size:1.6rem;margin:32px 0 8px}
+.sub{color:var(--muted);margin-bottom:20px}
+h2{font-size:1.15rem;margin:26px 0 10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:16px}
+label{display:block;font-size:.9rem;color:var(--muted);margin:12px 0 4px}
+input,select{
+  width:100%;padding:10px 12px;border-radius:8px;font-size:1rem;
+  background:#0d1117;border:1px solid var(--border);color:var(--text);
+}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+.result{margin-top:16px;padding:14px 16px;border-radius:8px;background:#0d1117;border:1px solid var(--border);font-size:.95rem}
+.result b{color:var(--green)}
+.ok{color:var(--green)} .warn{color:#d29922} .bad{color:#f85149}
+.hint{color:var(--muted);font-size:.82rem;margin-top:6px}
+.cta{display:inline-block;background:var(--accent-dark);color:#fff;text-decoration:none;border-radius:8px;padding:10px 18px;font-weight:600;margin:16px 0}
+.disclosure{border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 14px;color:var(--muted);font-size:.85rem;margin:16px 0}
+footer{border-top:1px solid var(--border);margin-top:44px;padding:22px 0;color:var(--muted);font-size:.85rem}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="../index.html">⚗️ 小机实验室 <small>VPS LAB · 省钱选机不踩坑</small></a></div></header>
+<main class="wrap">
+  <h1>VPS 流量与配置计算器</h1>
+  <p class="sub">买之前算一算：你的真实用量到底需要哪一档，别为用不到的配置多花钱。</p>
+
+  <div class="card">
+    <h2>① 月流量估算</h2>
+    <label for="visitors">日均访客数（PV 独立访客均可，估个数就行）</label>
+    <input id="visitors" type="number" min="0" value="50">
+    <label for="pages">每个访客平均浏览几个页面</label>
+    <input id="pages" type="number" min="0.1" step="0.1" value="2">
+    <label for="pagesize">平均页面大小（MB，图文博客约 1–2，带图首页 2–3）</label>
+    <input id="pagesize" type="number" min="0.1" step="0.1" value="1.5">
+    <div class="result" id="trafficResult">填写上方数字即可看到估算结果。</div>
+    <p class="hint">估算含约 3 倍安全冗余。下载站、图床、视频站不适用本计算器，这类用途流量另算。</p>
+  </div>
+
+  <div class="card">
+    <h2>② 内存 / 配置档位建议</h2>
+    <label for="usage">这台机器主要跑什么</label>
+    <select id="usage">
+      <option value="static">静态博客 / 作品集（Hugo、Hexo 生成的页面）</option>
+      <option value="wordpress">WordPress 博客 / 小型企业站</option>
+      <option value="docker">Docker 多服务组合（反代 + 数据库 + 应用）</option>
+      <option value="db">数据库服务器（MySQL / PostgreSQL）</option>
+      <option value="proxy">跳板机 / SSH 中转 / 轻量代理</option>
+      <option value="cloud">个人网盘（Nextcloud 等）</option>
+      <option value="cron">定时任务 / 爬虫 / 监控脚本</option>
+    </select>
+    <div class="result" id="ramResult">选择用途即可看到建议。</div>
+    <p class="hint">建议为经验下限，业务增长后优先升内存而不是换商家。</p>
+  </div>
+
+  <div class="card">
+    <h2>③ 综合建议</h2>
+    <div class="result" id="finalResult">完成上面两步即可看到推荐档位。</div>
+    <a class="cta" id="ctaLink" href="../go.html?to=racknerd" rel="nofollow sponsored">查看 RackNerd 当前套餐价格 →</a>
+    <p class="hint">当前黑五档：1G/$15.98 · 2.5G/$27.98 · 4G/$47.98（年付，终身续费同价）。价格以官网为准。</p>
+  </div>
+
+  <blockquote class="disclosure">披露：本页含联盟推广链接，通过链接购买我会获得商家支付的少量返佣，不影响计算结果与推荐结论。计算器纯前端本地运行，不收集任何数据。</blockquote>
+</main>
+<footer><div class="wrap">© 2026 小机实验室 · <a href="../index.html">首页</a> · <a href="../blog/">全部文章</a></div></footer>
+
+<script>
+var RAM = {
+  static:  { ram: "1 GB",      note: "纯静态页几乎不吃内存，1G 档绰绰有余。" },
+  wordpress: { ram: "2 GB",    note: "WordPress + MySQL 的甜点档是 2G；1G 也能跑但插件一多就吃紧。" },
+  docker:  { ram: "4 GB",      note: "反代 + 数据库 + 两三个应用，4G 是甜点档，2G 勉强。" },
+  db:      { ram: "4 GB 起",   note: "数据库建议 4G 起，并关注磁盘 IO 而不只是内存。" },
+  proxy:   { ram: "512 MB – 1 GB", note: "跳板机几乎不消耗资源，最便宜的一档就够。" },
+  cloud:   { ram: "2 GB 起",   note: "Nextcloud 空跑 2G 够，文件多、多人用再加到 4G，注意硬盘容量才是瓶颈。" },
+  cron:    { ram: "1 GB",      note: "定时任务/轻量爬虫 1G 足够，注意遵守目标站点的规则。" }
+};
+
+function fmt(n) { return n >= 100 ? Math.round(n) : Math.round(n * 10) / 10; }
+
+function calc() {
+  var visitors = parseFloat(document.getElementById("visitors").value) || 0;
+  var pages = parseFloat(document.getElementById("pages").value) || 0;
+  var mb = parseFloat(document.getElementById("pagesize").value) || 0;
+  var gb = visitors * pages * mb * 30.4 / 1024;
+
+  var tEl = document.getElementById("trafficResult");
+  if (gb <= 0) {
+    tEl.innerHTML = "填写上方数字即可看到估算结果。";
+  } else {
+    var tiers = [
+      { name: "1G 档（3 TB/月）", gb: 3072, price: "$15.98/年" },
+      { name: "2.5G 档（6 TB/月）", gb: 6144, price: "$27.98/年" },
+      { name: "4G 档（10 TB/月）", gb: 10240, price: "$47.98/年" }
+    ];
+    var pick = null;
+    for (var i = 0; i < tiers.length; i++) {
+      if (gb * 3 <= tiers[i].gb) { pick = tiers[i]; break; }
+    }
+    var need = "预计月流量约 <b>" + fmt(gb) + " GB</b>（含 3 倍冗余）。";
+    if (pick) {
+      tEl.innerHTML = need + " 推荐档位：<b class='ok'>" + pick.name + "</b>（" + pick.price + "）即可长期覆盖。";
+    } else {
+      tEl.innerHTML = need + " 已超出常见年付档位（<span class='warn'>月流量需求较大</span>）：考虑更高配套餐、加 CDN 分流，或拆分静态资源。";
+    }
+  }
+
+  var usage = document.getElementById("usage").value;
+  var r = RAM[usage];
+  document.getElementById("ramResult").innerHTML = "建议内存：<b>" + r.ram + "</b>。 " + r.note;
+
+  var fEl = document.getElementById("finalResult");
+  if (gb <= 0) {
+    fEl.innerHTML = "完成上面两步即可看到综合档位推荐。";
+    return;
+  }
+  var minRamGb = usage === "proxy" ? 1 : (usage === "static" || usage === "cron" ? 1 : (usage === "wordpress" || usage === "cloud" ? 2.5 : 4));
+  var plans = [
+    { name: "1G 档",  ram: 1,   traffic: 3072,  price: "$15.98/年" },
+    { name: "2.5G 档", ram: 2.5, traffic: 6144,  price: "$27.98/年" },
+    { name: "4G 档",  ram: 4,   traffic: 10240, price: "$47.98/年" },
+    { name: "6G 档",  ram: 6,   traffic: 15360, price: "$74.98/年" }
+  ];
+  var final = null;
+  for (var j = 0; j < plans.length; j++) {
+    if (minRamGb <= plans[j].ram && gb * 3 <= plans[j].traffic) { final = plans[j]; break; }
+  }
+  if (final) {
+    fEl.innerHTML = "按你的用量（内存≥" + minRamGb + "G、月流量≥" + fmt(gb * 3) + "GB 含冗余），推荐：<b class='ok'>" + final.name + "</b>（" + final.price + "，终身续费同价）。";
+  } else {
+    fEl.innerHTML = "你的需求超出常见年付档位（<span class='warn'>内存或流量要求较高</span>）：建议看更高配月付套餐或独服，别硬塞进年付小鸡。";
+  }
+}
+
+["visitors", "pages", "pagesize", "usage"].forEach(function (id) {
+  document.getElementById(id).addEventListener("input", calc);
+});
+calc();
+</script>
+</body>
+</html>
